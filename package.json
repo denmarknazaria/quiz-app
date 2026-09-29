@@ -19,7 +19,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "prisma": "^6.19.3",
-    "tsx": "^4.23.14",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   },
   "prisma": {
