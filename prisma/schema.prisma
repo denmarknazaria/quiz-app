@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Question {
+  id      Int      @id @default(autoincrement())
+  text    String   @db.VarChar(500)
+  options Option[]
+}
+
+model Option {
+  id         Int      @id @default(autoincrement())
+  text       String   @db.VarChar(255)
+  isCorrect  Boolean  @default(false)
+  questionId Int
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+}
+
+model Attempt {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(80)
+  score     Int
+  total     Int
+  createdAt DateTime @default(now())
+}
